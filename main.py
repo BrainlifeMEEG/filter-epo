@@ -19,12 +19,6 @@ Outputs:
     - out_figs/filter_response.png: Filter frequency response plot
     - out_report/report.html: QC report comparing original and filtered data
     - product.json: Metadata about the filtering
-
-Note: config.json's key for the input file is "mne", but this app
-reads config['epo'] - this mismatch predates this migration (the app
-currently cannot run without a config.json that has an "epo" key) and
-is left as-is; flagging for separate follow-up since resolving it
-requires knowing which side is correct.
 """
 
 # Copyright (c) 2026 brainlife.io
@@ -87,7 +81,7 @@ plt.savefig(fig_path)
 
 if config['notch']:
     config['notch'] = [int(x) for x in re.split("\\W+", config['notch'])]
-    raw.notch_filter(freqs=config['notch'], picks=config['picks'])
+    epo.notch_filter(freqs=config['notch'], picks=config['picks'])
 
 epo.filter(picks=config['picks'],
            l_freq=config['l_freq'],
