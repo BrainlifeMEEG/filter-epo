@@ -101,7 +101,7 @@ report = mne.Report(title='Filtering report')
 report.add_figure(fig, title='Filter')
 report.add_epochs(epo_orig, 'Original unfiltered data', psd=True)
 report.add_epochs(epo, 'Filtered data', psd=True)
-report.save(os.path.join('out_dir_report', 'report.html'), overwrite=True)
+report.save(os.path.join('out_dir_report', 'report.html'), overwrite=True, verbose=False)
 
 epo.save(os.path.join('out_dir', 'meg-epo.fif'), overwrite=True)
 
