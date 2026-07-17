@@ -2,6 +2,7 @@
 #PBS -l nodes=1:ppn=4
 #PBS -l walltime=02:00:00
 #PBS -N MEEG_filter
+#SBATCH --mem=20G
 
 # PBS is a computer software that performs job-scheduling
 # Copyright (c) 2020 brainlife.io at University of Texas at Austin and Indiana U
