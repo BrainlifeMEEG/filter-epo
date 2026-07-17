@@ -103,7 +103,7 @@ report.add_epochs(epo_orig, 'Original unfiltered data', psd=True)
 report.add_epochs(epo, 'Filtered data', psd=True)
 report.save(os.path.join('out_report', 'report.html'), overwrite=True)
 
-epo.save(os.path.join('out_dir', 'epo.fif'), overwrite=True)
+epo.save(os.path.join('out_dir', 'meg-epo.fif'), overwrite=True)
 
 # == CREATE PRODUCT.JSON ==
 product_items = []
