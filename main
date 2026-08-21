@@ -11,12 +11,10 @@
 #
 # Author: Franco Pestilli
 
-
 set -e
 set -x
 
 # Make output directories
-mkdir -p out_dir
 mkdir -p out_figs
 mkdir -p out_report
 
