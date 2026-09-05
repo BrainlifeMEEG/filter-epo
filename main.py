@@ -16,8 +16,8 @@ Inputs:
 
 Outputs:
     - out_dir/epo.fif: Filtered epoched data
-    - out_figs/filter_response.png: Filter frequency response plot
-    - out_report/report.html: QC report comparing original and filtered data
+    - out_dir_figs/filter_response.png: Filter frequency response plot
+    - out_dir_report/report.html: QC report comparing original and filtered data
     - product.json: Metadata about the filtering
 """
 
@@ -50,7 +50,7 @@ from brainlife_utils import (
 setup_matplotlib_backend()
 
 # Ensure output directories exist
-ensure_output_dirs('out_dir', 'out_figs', 'out_report')
+ensure_output_dirs('out_dir', 'out_dir_figs', 'out_dir_report')
 
 # Load configuration
 config = load_config()
@@ -76,7 +76,7 @@ f = mne.filter.create_filter(epo_orig.get_data(),
 
 plt.figure()
 fig = plot_filter(f, sfreq)
-fig_path = os.path.join('out_figs', 'filter_response.png')
+fig_path = os.path.join('out_dir_figs', 'filter_response.png')
 plt.savefig(fig_path)
 
 if config['notch']:
@@ -101,7 +101,7 @@ report = mne.Report(title='Filtering report')
 report.add_figure(fig, title='Filter')
 report.add_epochs(epo_orig, 'Original unfiltered data', psd=True)
 report.add_epochs(epo, 'Filtered data', psd=True)
-report.save(os.path.join('out_report', 'report.html'), overwrite=True, verbose=False)
+report.save(os.path.join('out_dir_report', 'report.html'), overwrite=True, verbose=False)
 
 epo.save(os.path.join('out_dir', 'meg-epo.fif'), overwrite=True)
 
