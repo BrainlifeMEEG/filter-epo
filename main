@@ -15,8 +15,8 @@ set -e
 set -x
 
 # Make output directories
-mkdir -p out_dir_figs
-mkdir -p out_dir_report
+mkdir -p out_figs
+mkdir -p out_report
 
 # Run the actual python code
 singularity exec docker://brainlifemeeg/mne:1.12.1 python3 main.py
